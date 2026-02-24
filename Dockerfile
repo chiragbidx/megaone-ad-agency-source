@@ -1,8 +1,9 @@
-FROM node:20
+FROM node:20-alpine
+
+# Install only git; use --no-cache to keep image lean
+RUN apk add --no-cache git
 
 WORKDIR /app
-
-RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
 
 COPY . .
 
